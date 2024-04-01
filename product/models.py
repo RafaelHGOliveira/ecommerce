@@ -4,7 +4,7 @@ from django.db import models
 class Base(models.Model):
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
     modified_at = models.DateTimeField('Modificado em', auto_now=True)
-    active = models.BooleanField(default=True)
+    active = models.BooleanField('Ativo', default=True)
 
 class Category(Base):
     name = models.CharField(max_length=254, unique=True)
