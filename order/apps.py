@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class customerConfig(AppConfig):
+class OrderConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'customer'
-    verbose_name = 'Cliente'
+    name = 'order'
+    verbose_name = 'Pedido'
