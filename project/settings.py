@@ -34,6 +34,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'product',
+    'cart',
+    'customer',
+    
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,3 +144,5 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "customer.User"
