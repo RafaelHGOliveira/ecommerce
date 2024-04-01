@@ -5,6 +5,7 @@ from product import models
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'modified_at', 'created_at', )
     list_editable = ('name', )
+    search_fields = ('name', )
 
 class PictureInline(admin.TabularInline):
     model = models.Picture
@@ -23,4 +24,5 @@ class ProductAdmin(admin.ModelAdmin):
         'created_at',
     )
     list_display_links = list_display
+    search_fields = ('id', 'name', )
     inlines = [PictureInline]  # Embed PictureInline in ProductAdmin
