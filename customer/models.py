@@ -37,11 +37,29 @@ class MyUserManager(BaseUserManager):
     
 
 class User(AbstractUser):
-    cpf = models.CharField('CPF', max_length=11, null=True)
-    birth_date = models.DateField('Data de Nascimento', null=True)
-    state = models.CharField('Estado', max_length=255, null=True)
-    city = models.CharField('Cidade', max_length=255, null=True)
-    address = models.CharField('Endereço', max_length=255, null=True)
+    cpf = models.CharField('CPF', max_length=11, null=True, blank=True)
+    birth_date = models.DateField('Data de Nascimento', null=True, blank=True)
+    phone_number = models.CharField('Telefone', max_length=11, null=True, blank=True)
+    genre = models.CharField('Genero', max_length=255, null=True, blank=True)
+    
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+        
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
+
+class Address(models.Model):
+    street = models.CharField('Rua', max_length=255, null=True)
     number = models.CharField('Numero', max_length=10, null=True)
-    phone_number = models.CharField('Telefone', max_length=11, null=True)
-    genre = models.CharField('Genero', max_length=255, null=True)
+    district = models.CharField('Estado', max_length=255, null=True)
+    city = models.CharField('Cidade', max_length=255, null=True)
+    state = models.CharField('Estado', max_length=255, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name = 'Usuario')
+    
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'
+        
+    def __str__(self) -> str:
+        return f'{self.address}, {self.number}, {self.district}, {self.city}, {self.state},'
