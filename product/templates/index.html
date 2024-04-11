@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     {% for p in products %}
-        <h1>{{p}}</p></h1>
+        <h2>
+            Nome: <a href="{% url 'product_detail' p.id %}">{{ p.name }}</a>
+            Preço: {{ p.price }}
+            Descrição: {{ p.short_description }}
+        </h2>
     {% endfor %}
 {% endblock content %}

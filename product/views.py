@@ -6,12 +6,12 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-price')
     
     # TODO: configure pagination
-    # paginator = Paginator(products, 20)
-    # p = request.GET.get('p')
-    # products = paginator.get(p)
+    paginator = Paginator(products, 20)
+    p = request.GET.get('p')
+    products = paginator.get_page(p)
     
     return render(request, 'index.html', {
         'products': products,
@@ -20,7 +20,7 @@ def index(request):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    if not product.mostrar:
+    if not product.active:
         raise Http404()
     return render(request, 'product_detail.html', {
         'product': product,
