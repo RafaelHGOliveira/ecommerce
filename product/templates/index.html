@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    {% for p in products %}
-        
+<div class="center">
+
+    <div class="grid grid-flow-col">
+        {% for p in products %}
+
         <h2>Foto do Produto</h2>
         {% if p.picture_set.all %}
-            <img src="{{ p.picture_set.all.0.picture.url }}" alt="Imagem do Produto">
+        <img class="max-w-20 max-h-20" src="{{ p.picture_set.all.0.picture.url }}" alt="Imagem do Produto">
         {% else %}
-            <p>Nenhuma imagem disponível</p>
+        <p>Nenhuma imagem disponível</p>
         {% endif %}
         <br>
         Nome: <a href="{% url 'product_detail' p.id %}">{{ p.name }}</a>
         Preço: {{ p.price }}
         Descrição: {{ p.short_description }}
         <br>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}
