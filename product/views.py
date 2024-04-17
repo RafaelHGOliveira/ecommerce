@@ -10,7 +10,7 @@ def index(request):
     categories = Category.objects.all().order_by('-id')
     
     # TODO: configure pagination
-    paginator = Paginator(products, 20)
+    paginator = Paginator(products, 50)
     p = request.GET.get('p')
     products = paginator.get_page(p)
     
