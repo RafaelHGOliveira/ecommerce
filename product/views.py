@@ -6,7 +6,8 @@ from django.core.paginator import Paginator
 
 
 def index(request):
-    products = Product.objects.all().order_by('-price')
+    products = Product.objects.all().order_by('-id')
+    categories = Category.objects.all().order_by('-id')
     
     # TODO: configure pagination
     paginator = Paginator(products, 20)
@@ -15,6 +16,7 @@ def index(request):
     
     return render(request, 'index.html', {
         'products': products,
+        'categories': categories,
     })
 
 
