@@ -1,21 +1,16 @@
-<!DOCTYPE html>
+{% load static %} {% load compress %}
+
+<!doctype html>
 <html lang="pt-br">
+    {% include "partial/_head.html" %}
 
-{% include "partial/_head.html" %}
+    <body>
+        <!-- Navigation -->
+        {% include 'partial/_nav.html' %} {% include 'partial/_messages.html' %}
 
-<body>
-  <!-- Navigation -->
-  {% include 'partial/_nav.html' %}
+        <!-- Page Content -->
+        {% block content %}{% endblock content %}
 
-
-  {% include 'partial/_messages.html' %}
-
-  <!-- Page Content -->
-  {% block content %}{% endblock content %}
-
-
-
-</body>
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    </body>
 </html>

@@ -1,11 +1,6 @@
-{% load static %}
-
-{% comment %} Exibindo mensagens utilizando o messages do Django {% endcomment %}
-{% if messages %}
-<br>
-  {% for message in messages %}
-    <div class="alert {{message.tags}}" role="alert">
-      {{message}}
-    </div>
-  {% endfor %}
-{% endif %}
+{% load static %} {% comment %} Exibindo mensagens utilizando o messages do
+Django {% endcomment %} {% if messages %}
+<br />
+{% for message in messages %}
+<div class="alert {{message.tags}}" role="alert">{{message}}</div>
+{% endfor %} {% endif %}
