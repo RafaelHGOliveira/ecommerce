@@ -41,22 +41,25 @@ INSTALLED_APPS = [
     'cart',
     'customer',
     'order',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'compressor', 
+
+    'compressor',
 ]
 
 COMPRESS_ROOT = BASE_DIR / 'base_static'
 
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder',
+                       'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+                       'compressor.finders.CompressorFinder',
+                       )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,7 +142,7 @@ STATICFILES_DIRS = (
     BASE_DIR / 'base_static',
 )
 
-STATIC_ROOT = BASE_DIR / 'static' # collectstatic
+STATIC_ROOT = BASE_DIR / 'static'  # collectstatic
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

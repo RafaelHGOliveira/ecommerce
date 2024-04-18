@@ -25,7 +25,7 @@ urlpatterns = [
     path('customer/', include('customer.urls')),
     path('cart/', include('cart.urls')),
     path('admin/', admin.site.urls),
-    
+
 ]
 
 # Show photos when accessing the link
@@ -38,6 +38,6 @@ urlpatterns += static(settings.STATIC_URL,
 # TODO: Remover debug tollbar
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns= [
+    urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
