@@ -9,4 +9,3 @@ class Cart(models.Model):
     class Meta:
         verbose_name = 'Carrinho'
         verbose_name_plural = 'Carrinhos'
-    

@@ -15,11 +15,13 @@ django.setup()
 
 fake = Faker()
 
+
 def create_fake_categories(num_categories):
     for _ in range(num_categories):
         name = fake.word()
         category = Category.objects.create(name=name)
         print(f"Categoria criada: {category}")
+
 
 def create_fake_products(num_products):
     categories = Category.objects.all()
@@ -40,8 +42,9 @@ def create_fake_products(num_products):
         )
         print(f"Produto criado: {product}")
 
+
 if __name__ == '__main__':
-    from product.models import Category, Product 
-    
+    from product.models import Category, Product
+
     create_fake_categories(10)
     create_fake_products(100)

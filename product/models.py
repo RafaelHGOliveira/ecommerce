@@ -6,15 +6,17 @@ class Base(models.Model):
     modified_at = models.DateTimeField('Modificado em', auto_now=True)
     active = models.BooleanField('Ativo', default=True)
 
+
 class Category(Base):
     name = models.CharField(max_length=254, unique=True)
-    
+
     def __str__(self) -> str:
         return self.name
-    
+
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
+
 
 class Product(Base):
     name = models.CharField('Nome', max_length=254)
@@ -22,20 +24,24 @@ class Product(Base):
     stock = models.IntegerField('Estoque', default=0)
     long_description = models.TextField('Descrição longa')
     short_description = models.TextField('Descrição curta')
-    category_ref = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name = 'Categoria')
-    
+    category_ref = models.ForeignKey(
+        Category, on_delete=models.PROTECT, verbose_name='Categoria'
+    )
+
     class Meta:
         verbose_name = 'Produto'
         verbose_name_plural = 'Produtos'
-    
+
     def __str__(self) -> str:
         return self.name
 
-    
+
 class Picture(models.Model):
-    picture = models.ImageField('Foto', blank=True, upload_to='pictures/%Y/%m/')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name = 'Produto')
-    
+    picture = models.ImageField(
+        'Foto', blank=True, upload_to='pictures/%Y/%m/')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, verbose_name='Produto')
+
     class Meta:
         verbose_name = 'Foto'
         verbose_name_plural = 'Fotos'

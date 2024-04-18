@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-
-{% block content %}    
-        <h2>
-            Nome: {{ product.name }}
-            Preço: {{ product.price }}
-            Descrição: {{ product.short_description }}
-            <h2>Fotos do Produto</h2>
-            {% for picture in product.picture_set.all %}
-                <img src="{{ picture.picture.url }}" alt="Imagem do Produto">
-            {% endfor %}
-        </h2>
+{% extends 'base.html' %} {% block content %}
+<h2>
+    Nome: {{ product.name }} Preço: {{ product.price }} Descrição: {{
+    product.short_description }}
+    <h2>Fotos do Produto</h2>
+    {% for picture in product.picture_set.all %}
+    <img src="{{ picture.picture.url }}" alt="Imagem do Produto" />
+    {% endfor %}
+</h2>
 {% endblock content %}
