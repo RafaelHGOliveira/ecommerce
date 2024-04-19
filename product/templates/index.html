@@ -1,23 +1,38 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 
-<div class="center">
-    <div class="grid grid-flow-col">
+<div class="container mx-auto">
+    <br />
+    <br />
+    <br />
+    <h1 class="">Produtos:</h1>
+    <div
+        class="grid grid-cols-1 gap-8 bg-white sm:grid-cols-2 sm:gap-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
+    >
         {% for p in products %}
-
-        <h2>Foto do Produto</h2>
-        {% if p.picture_set.all %}
-        <img
-            class="max-h-20 max-w-20"
-            src="{{ p.picture_set.all.0.picture.url }}"
-            alt="Imagem do Produto"
-        />
-        {% else %}
-        <p>Nenhuma imagem disponível</p>
-        {% endif %}
-        <br />
-        Nome: <a href="{% url 'product_detail' p.id %}">{{ p.name }}</a>
-        Preço: {{ p.price }} Descrição: {{ p.short_description }}
-        <br />
+        <div class="group relative border">
+            {% comment %} {% if p.picture_set.all %}
+            <img
+                class="max-h-2 cursor-pointer"
+                src="{{ p.picture_set.all.0.picture.url }}"
+                alt="Imagem do Produto"
+            />
+            {% else %}
+            <img
+                class="max-h-2 cursor-pointer"
+                src="{% static 'img/placeholder.png' %}"
+                alt="Imagem do Produto"
+            />
+            {% endif %} {% endcomment %}
+            <a class="block" href="{% url 'product_detail' p.id %}">
+                <img
+                    class="mx-auto max-h-max max-w-max object-contain"
+                    src="{% static 'img/placeholder.png' %}"
+                    alt="Imagem do Produto"
+                />
+                Nome: {{ p.name }} <br />
+                Preço: R${{ p.price }} <br />
+            </a>
+        </div>
         {% endfor %}
     </div>
 </div>
