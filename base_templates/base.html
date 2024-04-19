@@ -1,4 +1,4 @@
-{% load static %} {% load compress %}
+{% load static %} {% load compress %} {% load django_browser_reload %}
 
 <!doctype html>
 <html lang="pt-br">
@@ -12,5 +12,7 @@
         {% block content %}{% endblock content %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+        {% django_browser_reload_script %}
     </body>
 </html>
