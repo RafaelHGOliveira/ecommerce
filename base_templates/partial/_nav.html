@@ -1,25 +1,180 @@
-<nav class="nav">
-    <a href="#">Ecommerce</a>
-    <ul>
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#"> Mais Vendidos </a>
-        </li>
-        <li>
-            Categorias
-            <ul>
-                {% for c in categories %}
-                <li><a href="#">{{ c.name }}</a></li>
-                {% comment %}
-                <li><a href="{% url 'category' c.id %}"> {{ c.name }} </a></li>
-                {% endcomment %} {% endfor %}
+{% load static %}
+<nav
+    class="fixed left-0 top-0 z-50 w-full border-gray-400 bg-gray-950 text-white"
+>
+    <div
+        class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+    >
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img
+                src="https://flowbite.com/docs/images/logo.svg"
+                class="h-8"
+                alt="Flowbite Logo"
+            />
+            <span
+                class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+            >
+                Atacadão do Jorjão
+            </span>
+        </a>
+        <div
+            class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse"
+        >
+            <button
+                type="button"
+                class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:me-0"
+                id="user-menu-button"
+                aria-expanded="false"
+                data-dropdown-toggle="user-dropdown"
+                data-dropdown-placement="bottom"
+            >
+                <span class="sr-only">Open user menu</span>
+                <img
+                    class="h-8 w-8 rounded-full"
+                    src="{% static 'img/eu remaster.jpg' %}"
+                    alt="user photo"
+                />
+            </button>
+            <!-- Dropdown menu -->
+            <div
+                class="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-gray-950 text-white shadow dark:divide-gray-600 dark:bg-gray-700"
+                id="user-dropdown"
+            >
+                <div class="px-4 py-3">
+                    <span class="block text-sm">Rafael Henrique</span>
+                    <span class="block truncate text-sm">
+                        rafael.h.g.oliveira@gmail.com
+                    </span>
+                </div>
+                <ul class="py-2" aria-labelledby="user-menu-button">
+                    <li>
+                        <a
+                            href="#"
+                            class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
+                            >Dashboard</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
+                            >Settings</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
+                            >Earnings</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="#"
+                            class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
+                            >Sign out</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <button
+                data-collapse-toggle="navbar-user"
+                type="button"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+                aria-controls="navbar-user"
+                aria-expanded="false"
+            >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                    class="h-5 w-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 17 14"
+                >
+                    <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 1h15M1 7h15M1 13h15"
+                    />
+                </svg>
+            </button>
+        </div>
+        <div
+            class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
+            id="navbar-user"
+        >
+            <ul
+                class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-950 p-4 font-medium text-white md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 rtl:space-x-reverse"
+            >
+                <li>
+                    <a
+                        href="#"
+                        class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
+                        aria-current="page"
+                        >Inicio</a
+                    >
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        class="block rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                        >About</a
+                    >
+                </li>
+                <li>
+                    <button
+                        id="dropdownNavbarLink"
+                        data-dropdown-toggle="dropdownNavbar"
+                        class="flex w-full items-center justify-between rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                    >
+                        Categorias
+                        <svg
+                            class="ms-2.5 h-2.5 w-2.5"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 10 6"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m1 1 4 4 4-4"
+                            />
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div
+                        id="dropdownNavbar"
+                        class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-black font-normal shadow dark:divide-gray-600 dark:bg-gray-700"
+                    >
+                        <ul
+                            class="py-2 text-sm text-white"
+                            aria-labelledby="dropdownLargeButton"
+                        >
+                            {% for c in categories %}
+                            <li>
+                                <a
+                                    href="#"
+                                    class="block px-4 py-2 hover:bg-gray-100 hover:text-black"
+                                    >{{ c.name }}</a
+                                >
+                            </li>
+                            {% comment %}
+                            <li>
+                                <a href="{% url 'category' c.id %}">
+                                    {{ c.name }}
+                                </a>
+                            </li>
+                            {% endcomment %} {% endfor %}
+                        </ul>
+                    </div>
+                </li>
             </ul>
-        </li>
-    </ul>
-    <form>
-        <input type="search" placeholder="Search" aria-label="Search" />
-        <button type="submit">Search</button>
-    </form>
+        </div>
+    </div>
 </nav>
