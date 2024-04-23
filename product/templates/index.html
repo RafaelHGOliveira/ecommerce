@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    {% load static %}
-
     <br />
     <br />
     <br />
-    <h1 class="">Produtos:</h1>
+    <h1 class="m-4">Produtos:</h1>
     <div
-        class="grid gap-4 bg-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
+        class="m-4 grid gap-4 bg-white text-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
     >
         {% for p in products %}
             <div class="group relative border">
                 <a class="block" href="{% url 'product_detail' p.id %}">
                     <img
-                        class="mx-auto  h-auto w-96"
+                        class="mx-auto h-auto w-96 rounded-xl"
                         {% if p.picture_set.all %}
                             src="{{ p.picture_set.all.0.picture.url }}"
                         {% else %}
@@ -23,9 +22,11 @@
                     />
                 </a>
 
-                Nome: {{ p.name }} <br />
-                Preço: R${{ p.price }} <br />
+                Nome: {{ p.name }}
+                <br />
+                Preço: R${{ p.price }}
             </div>
         {% endfor %}
     </div>
+    {% include 'partial/_pagination.html' %}
 {% endblock content %}
