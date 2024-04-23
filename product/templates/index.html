@@ -1,40 +1,31 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
 
-<div class="container mx-auto">
     <br />
     <br />
     <br />
     <h1 class="">Produtos:</h1>
     <div
-        class="grid grid-cols-1 gap-8 bg-white sm:grid-cols-2 sm:gap-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
+        class="grid gap-4 bg-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
     >
         {% for p in products %}
-        <div class="group relative border">
-            {% comment %} {% if p.picture_set.all %}
-            <img
-                class="max-h-2 cursor-pointer"
-                src="{{ p.picture_set.all.0.picture.url }}"
-                alt="Imagem do Produto"
-            />
-            {% else %}
-            <img
-                class="max-h-2 cursor-pointer"
-                src="{% static 'img/placeholder.png' %}"
-                alt="Imagem do Produto"
-            />
-            {% endif %} {% endcomment %}
-            <a class="block" href="{% url 'product_detail' p.id %}">
-                <img
-                    class="mx-auto max-h-max max-w-max object-contain"
-                    src="{% static 'img/placeholder.png' %}"
-                    alt="Imagem do Produto"
-                />
+            <div class="group relative border">
+                <a class="block" href="{% url 'product_detail' p.id %}">
+                    <img
+                        class="mx-auto  h-auto w-96"
+                        {% if p.picture_set.all %}
+                            src="{{ p.picture_set.all.0.picture.url }}"
+                        {% else %}
+                            src="{% static 'img/placeholder.png' %}"
+                        {% endif %}
+                        alt="Imagem do Produto"
+                    />
+                </a>
+
                 Nome: {{ p.name }} <br />
                 Preço: R${{ p.price }} <br />
-            </a>
-        </div>
+            </div>
         {% endfor %}
     </div>
-</div>
-
 {% endblock content %}
