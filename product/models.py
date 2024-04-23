@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from PIL import Image
 
 
 class Base(models.Model):
@@ -45,3 +48,11 @@ class Picture(models.Model):
     class Meta:
         verbose_name = 'Foto'
         verbose_name_plural = 'Fotos'
+
+
+@receiver(post_save, sender=Picture)
+def resize_image(sender, instance, **kwargs):
+    if instance.picture:
+        with Image.open(instance.picture.path) as img:
+            img_resized = img.resize((480, 480))
+            img_resized.save(instance.picture.path)
