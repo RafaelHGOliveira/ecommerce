@@ -22,18 +22,18 @@
         >
             <button
                 type="button"
-                class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:me-0"
+                class=""
                 id="user-menu-button"
                 aria-expanded="false"
                 data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom"
             >
-                <span class="sr-only">Open user menu</span>
-                <img
-                    class="h-8 w-8 rounded-full"
-                    src="{% static 'img/eu remaster.jpg' %}"
-                    alt="user photo"
-                />
+                <span
+                    class="block rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 
+                    dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                >
+                    Minha Conta
+                </span>
             </button>
             <!-- Dropdown menu -->
             <div
@@ -41,7 +41,7 @@
                 id="user-dropdown"
             >
                 <div class="px-4 py-3">
-                    <span class="block text-sm">Rafael Henrique</span>
+                    <span class="block text-sm"> Rafael Henrique </span>
                     <span class="block truncate text-sm">
                         rafael.h.g.oliveira@gmail.com
                     </span>
@@ -51,36 +51,41 @@
                         <a
                             href="#"
                             class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
-                            >Dashboard</a
                         >
+                            Dashboard
+                        </a>
                     </li>
                     <li>
                         <a
                             href="#"
                             class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
-                            >Settings</a
                         >
+                            Settings
+                        </a>
                     </li>
                     <li>
                         <a
                             href="#"
                             class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
-                            >Earnings</a
                         >
+                            Earnings
+                        </a>
                     </li>
                     <li>
                         <a
                             href="#"
                             class="block px-4 py-2 text-sm hover:bg-gray-100 hover:text-black"
-                            >Sign out</a
                         >
+                            Sign out
+                        </a>
                     </li>
                 </ul>
             </div>
             <button
                 data-collapse-toggle="navbar-user"
                 type="button"
-                class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none 
+                focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
                 aria-controls="navbar-user"
                 aria-expanded="false"
             >
@@ -107,28 +112,35 @@
             id="navbar-user"
         >
             <ul
-                class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-950 p-4 font-medium text-white md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 rtl:space-x-reverse"
+                class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-950 p-4 font-medium text-white md:mt-0 md:flex-row md:space-x-8 
+                md:border-0 md:p-0 rtl:space-x-reverse"
             >
                 <li>
                     <a
                         href="#"
                         class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
                         aria-current="page"
-                        >Inicio</a
                     >
+                        Inicio
+                    </a>
                 </li>
                 <li>
                     <a
                         href="#"
-                        class="block rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-                        >About</a
+                        class="block rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 
+                        dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
                     >
+                        About
+                    </a>
                 </li>
+
                 <li>
                     <button
                         id="dropdownNavbarLink"
                         data-dropdown-toggle="dropdownNavbar"
-                        class="flex w-full items-center justify-between rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                        class="flex w-full items-center   justify-between rounded px-3 py-2 text-white hover:bg-gray-100 dark:border-gray-700 
+                        dark:text-white     dark:hover:bg-gray-700 dark:focus:text-white md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 
+                        md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
                     >
                         Categorias
                         <svg
@@ -157,20 +169,15 @@
                             aria-labelledby="dropdownLargeButton"
                         >
                             {% for c in categories %}
-                            <li>
-                                <a
-                                    href="#"
-                                    class="block px-4 py-2 hover:bg-gray-100 hover:text-black"
-                                    >{{ c.name }}</a
-                                >
-                            </li>
-                            {% comment %}
-                            <li>
-                                <a href="{% url 'category' c.id %}">
-                                    {{ c.name }}
-                                </a>
-                            </li>
-                            {% endcomment %} {% endfor %}
+                                <li>
+                                    <a
+                                        href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 hover:text-black"
+                                    >
+                                        {{ c.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </li>
