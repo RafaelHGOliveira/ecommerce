@@ -7,10 +7,9 @@
     <body>
         <!-- Navigation -->
         {% include 'partial/_nav.html' %} {% include 'partial/_messages.html' %}
-        <div class="container mx-auto">
+        <div class="container mx-auto min-h-screen max-w-full">
             <!-- Page Content -->
             {% block content %}{% endblock content %}
-            {% include 'partial/_pagination.html' %}
             {% include 'partial/_footer.html' %}
         </div>
 
