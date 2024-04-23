@@ -1,10 +1,124 @@
-{% extends 'base.html' %} {% block content %}
-<h2>
-    Nome: {{ product.name }} Preço: {{ product.price }} Descrição: {{
-    product.short_description }}
-    <h2>Fotos do Produto</h2>
-    {% for picture in product.picture_set.all %}
-    <img src="{{ picture.picture.url }}" alt="Imagem do Produto" />
-    {% endfor %}
-</h2>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br />
+    <br />
+    <br />
+    <br />
+    <div
+        class="m-4 flex flex-col items-center justify-center text-center align-middle sm:flex-row sm:items-start sm:gap-x-14 sm:text-left "
+    >
+        <div class="w-96">
+            {% if product.picture_set.all %}
+                <div
+                    id="indicators-carousel"
+                    class="relative "
+                    data-carousel="static"
+                >
+                    <!-- Carousel wrapper -->
+                    <div
+                        class="relative h-96 w-auto overflow-hidden rounded-xl"
+                    >
+                        {% for picture in product.picture_set.all %}
+                            <!-- Item 1 -->
+                            <div
+                                class=" duration-700 ease-in-out"
+                                data-carousel-item="{% if forloop.first %}active{% endif %}"
+                            >
+                                <img
+                                    src="{{ picture.picture.url }}"
+                                    class="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2"
+                                    alt="Imagem do Produto"
+                                />
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Slider indicators -->
+                    <div
+                        class="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse"
+                    >
+                        {% for i in product.picture_set.all %}
+                            <button
+                                type="button"
+                                class="h-3 w-3 rounded-full"
+                                {% if forloop.first %}
+                                    aria-current="true"
+                                {% else %}
+                                    aria-current="false"
+                                {% endif %}
+                                aria-label="Slide {{ forloop.counter }}"
+                                data-carousel-slide-to="{{ forloop.counter0 }}"
+                            ></button>
+                        {% endfor %}
+                    </div>
+                    <!-- Slider controls -->
+                    <button
+                        type="button"
+                        class="group absolute start-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+                        data-carousel-prev
+                    >
+                        <span
+                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+                        >
+                            <svg
+                                class="h-4 w-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 6 10"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M5 1 1 5l4 4"
+                                />
+                            </svg>
+                            <span class="sr-only">Anterior</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        class="group absolute end-0 top-0 z-30 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
+                        data-carousel-next
+                    >
+                        <span
+                            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+                        >
+                            <svg
+                                class="h-4 w-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 6 10"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="m1 9 4-4-4-4"
+                                />
+                            </svg>
+                            <span class="sr-only">Próximo</span>
+                        </span>
+                    </button>
+                </div>
+            {% else %}
+                <img
+                    class="mx-auto h-auto w-96 rounded-xl"
+                    src="{% static 'img/placeholder.png' %}"
+                    alt="Imagem do Produto"
+                />
+            {% endif %}
+        </div>
+        <div class="w-5/12">
+            <h1 class="text-center text-5xl font-black">{{ product.name }}</h1>
+            <br />
+            <p>Descrição: {{ product.long_description }}</p>
+            <p class="font-black">Preço:</p>
+            R$ {{ product.price }}
+        </div>
+    </div>
 {% endblock content %}
