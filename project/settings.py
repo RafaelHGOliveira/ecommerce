@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     'compressor',
     'django_browser_reload',
+    'django_summernote',
 ]
 
 COMPRESS_ROOT = BASE_DIR / 'base_static'

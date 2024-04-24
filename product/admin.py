@@ -1,5 +1,6 @@
 from django.contrib import admin
 from product import models
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(models.Category)
@@ -17,7 +18,7 @@ class PictureInline(admin.TabularInline):
 
 
 @admin.register(models.Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(SummernoteModelAdmin):
     list_display = (
         'id',
         'name',
@@ -34,3 +35,5 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [PictureInline]  # Embed PictureInline in ProductAdmin
     list_filter = 'active', 'modified_at', 'created_at',
     readonly_fields = 'modified_at', 'created_at',
+
+    summernote_fields = ('long_description',)

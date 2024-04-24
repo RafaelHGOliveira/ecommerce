@@ -25,7 +25,9 @@ urlpatterns = [
     path('customer/', include('customer.urls')),
     path('cart/', include('cart.urls')),
     path('admin/', admin.site.urls),
+
     path("__reload__/", include("django_browser_reload.urls")),
+    path('summernote/', include('django_summernote.urls')),
 ]
 
 # Show photos when accessing the link
