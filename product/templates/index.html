@@ -4,15 +4,17 @@
     <br />
     <br />
     <br />
-    <h1 class="m-4">Produtos:</h1>
+
+    <h1 class="mx-auto max-w-4xl text-3xl font-semibold">Produtos:</h1>
+    <br />
     <div
-        class="m-4 grid min-h-screen grid-cols-2 gap-4 bg-white text-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6"
+        class="mx-auto flex min-h-screen max-w-4xl flex-row flex-wrap justify-center gap-4"
     >
         {% for p in products %}
-            <div class="group relative border">
-                <a class="block" href="{% url 'product_detail' p.id %}">
+            <div class="h-auto min-w-36 max-w-96 flex-1">
+                <a href="{% url 'product_detail' p.id p.slug %}">
                     <img
-                        class="mx-auto h-auto w-96 rounded-xl"
+                        class="mx-auto block rounded-xl"
                         {% if p.picture_set.all %}
                             src="{{ p.picture_set.all.0.picture.url }}"
                         {% else %}

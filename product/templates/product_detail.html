@@ -5,19 +5,15 @@
     <br />
     <br />
     <br />
-    <div class="flex min-h-screen flex-col px-10 sm:px-24">
-        <div
-            class="flex w-auto flex-col items-center gap-x-0 px-24 text-center align-middle sm:flex-row sm:items-start sm:gap-x-10 sm:text-left"
-        >
-            <div class="w-96">
+    <div class="mx-auto flex min-h-screen max-w-2xl flex-col">
+        <div class="mx-auto flex flex-row flex-wrap gap-5">
+            <div class="min-w-80 max-w-96 flex-1">
                 {% if product.picture_set.all %}
-                    <div
-                        id="default-carousel"
-                        class="relative w-full"
-                        data-carousel="slide"
-                    >
+                    <div class="relative mx-auto" data-carousel="static">
                         <!-- Carousel wrapper -->
-                        <div class="relative h-96 overflow-hidden rounded-lg">
+                        <div
+                            class="relative mx-auto h-80 w-80 flex-1 overflow-hidden rounded-xl"
+                        >
                             {% for picture in product.picture_set.all %}
                                 <!-- Item {{ forloop.counter }} -->
                                 <div
@@ -26,7 +22,7 @@
                                 >
                                     <img
                                         src="{{ picture.picture.url }}"
-                                        class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2"
+                                        class="absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2 rounded-xl"
                                         alt="Imagem do Produtro"
                                     />
                                 </div>
@@ -53,7 +49,8 @@
                             data-carousel-prev
                         >
                             <span
-                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 
+                                group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white"
                             >
                                 <svg
                                     class="h-4 w-4 text-white dark:text-gray-800 rtl:rotate-180"
@@ -79,7 +76,9 @@
                             data-carousel-next
                         >
                             <span
-                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/30 
+                                group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white 
+                                dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70"
                             >
                                 <svg
                                     class="h-4 w-4 text-white dark:text-gray-800 rtl:rotate-180"
@@ -102,14 +101,14 @@
                     </div>
                 {% else %}
                     <img
-                        class="mx-auto size-96 rounded-xl"
+                        class="min-w-80 max-w-96 rounded-xl"
                         src="{% static 'img/placeholder.png' %}"
                         alt="Imagem do Produto"
                     />
                 {% endif %}
             </div>
 
-            <div class="w-auto content-center items-center sm:w-5/12">
+            <div class="w-80 flex-1">
                 <h1 class="text-center text-5xl font-black">
                     {{ product.name }}
                 </h1>
@@ -122,7 +121,7 @@
                     <div class="flex content-center items-center">
                         <label
                             for="quantity-input"
-                            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                            class="block text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Quantidade:
                         </label>
@@ -132,9 +131,8 @@
                                 id="quantity-input"
                                 data-input-counter
                                 aria-describedby="helper-text-explanation"
-                                class="block h-auto w-16 border-x-0 border-gray-300 bg-gray-100 py-2.5 text-center text-sm text-gray-900 
-                            focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white 
-                            dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                                class="block h-8 w-16 border-gray-300 bg-gray-100 py-2.5 text-center text-sm 
+                                text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
                                 placeholder="999"
                                 value="1"
                                 min="1"
@@ -142,11 +140,10 @@
                             />
                         </div>
                     </div>
-                    <br />
                     <button
-                        class="mb-2 me-2 w-32 rounded-lg border border-gray-200  bg-gray-950 px-5 py-2.5 text-sm font-medium  
-                        text-white hover:border-gray-950 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none 
-                        focus:ring-4 focus:ring-gray-100 sm:w-auto"
+                        class="mt-4 w-36 rounded-lg border border-gray-200  bg-gray-950 px-5 py-2.5 text-sm 
+                        font-medium text-white hover:border-gray-950 hover:bg-gray-100 hover:text-blue-700 
+                        focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 sm:w-auto"
                     >
                         Adicionar ao carrinho
                     </button>
@@ -154,9 +151,7 @@
             </div>
         </div>
         <br />
-        <div class="container">
-            <p>Descrição:</p>
-            <p>{{ product.long_description }}</p>
-        </div>
+        <p class="text-3xl font-semibold">Descrição:</p>
+        <p>{{ product.long_description }}</p>
     </div>
 {% endblock content %}
