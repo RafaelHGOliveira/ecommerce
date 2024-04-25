@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from PIL import Image
-
+from django.utils.text import slugify
 
 class Base(models.Model):
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
@@ -22,11 +22,12 @@ class Category(Base):
 
 
 class Product(Base):
-    name = models.CharField('Nome', max_length=254)
+    name = models.CharField('Nome', max_length=254, unique=True)
     price = models.FloatField('Preço', default=0)
     stock = models.IntegerField('Estoque', default=0)
     long_description = models.TextField('Descrição longa')
     short_description = models.TextField('Descrição curta')
+    slug = models.SlugField(null=False, max_length=50)
     category_ref = models.ForeignKey(
         Category, on_delete=models.PROTECT, verbose_name='Categoria'
     )
@@ -37,6 +38,11 @@ class Product(Base):
 
     def __str__(self) -> str:
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Picture(models.Model):
