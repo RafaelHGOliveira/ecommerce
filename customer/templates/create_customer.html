@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <form
+        class="mx-auto min-h-screen max-w-2xl"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+        {% csrf_token %}
+        <div class="grid max-w-2xl grid-cols-1 sm:grid-cols-2 sm:gap-x-4">
+            <div class="mb-2">
+                <label
+                    for="email"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Email:
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="email@email.com"
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="name"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Primeiro Nome:
+                </label>
+                <input
+                    type="text"
+                    id="name"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder=""
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="last_name"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Sobrenome:
+                </label>
+                <input
+                    type="text"
+                    id="last_name"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder=""
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="phone_number"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Telefone:
+                </label>
+                <input
+                    type="text"
+                    id="phone_number"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder=""
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="date_of_birth"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Data de Nascimento:
+                </label>
+                <input
+                    type="date"
+                    id="date_of_birth"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder=""
+                    required
+                />
+            </div>
+            <div class="mb-2 ">
+                <label
+                    for="date_of_birth"
+                    class="mb-1 block w-full text-sm font-medium text-gray-900"
+                >
+                    CPF:
+                </label>
+                <input
+                    type="number"
+                    id="date_of_birth"
+                    class="remove-arrow block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm 
+                    text-gray-900 shadow-sm [appearance:textfield] focus:border-blue-500 focus:ring-blue-500 
+                    [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    placeholder="000.000.000-00"
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="countries"
+                    class="mb-1 block text-sm font-medium text-gray-900 dark:text-white"
+                >
+                    Sexo;
+                </label>
+                <select
+                    id="countries"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    focus:border-blue-500 focus:ring-blue-500 "
+                >
+                    <option value="male" selected>Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+            <div></div>
+            <div class="mb-2">
+                <label
+                    for="password1"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Senha:
+                </label>
+                <input
+                    type="password"
+                    id="password1"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="•••••••••"
+                    required
+                />
+            </div>
+            <div class="mb-2">
+                <label
+                    for="password2"
+                    class="mb-1 block text-sm font-medium text-gray-900"
+                >
+                    Repetir Senha:
+                </label>
+                <input
+                    type="password"
+                    id="password2"
+                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
+                    shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="•••••••••"
+                    required
+                />
+            </div>
+        </div>
+        <div class="mb-2 flex items-start">
+            <div class="flex h-5 items-center">
+                <input
+                    id="terms"
+                    type="checkbox"
+                    value=""
+                    class="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-blue-300"
+                    required
+                />
+            </div>
+
+            <label for="terms" class="ms-2 text-sm font-medium text-gray-900">
+                Concordo com os
+                <a href="#" class="text-blue-600 hover:underline">
+                    termos e condições
+                </a>
+            </label>
+        </div>
+        <br />
+        <button
+            type="submit"
+            class="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white 
+                hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+        >
+            Criar Conta
+        </button>
+    </form>
+{% endblock content %}
