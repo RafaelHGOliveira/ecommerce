@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='user',
-            name='birth_date',
+            name='date_of_birth',
             field=models.DateField(null=True),
         ),
         migrations.AddField(
