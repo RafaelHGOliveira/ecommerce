@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        "./product/templates/**/*.html", // Adicionando o diretório de templates em product/templates
+        "./product/templates/**/*.html",
+        "./customer/templates/**/*.html",
+        "./cart/templates/**/*.html",
+        "./order/templates/**/*.html",
         "./templates/**/*.html",
         "./base_templates/**/*.html",
         "./node_modules/flowbite/**/*.js",
